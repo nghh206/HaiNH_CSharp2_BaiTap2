@@ -21,23 +21,23 @@ namespace HaiNH_CSharp2_BaiTap2
             do
             {
                 Bike bike = new Bike();
-                bike.iD = ++Bike.IdTuTang; // ID tự tăng
+                bike.iD = ++Bike.IdTuTang; 
                 Console.WriteLine("Mời nhập vào tên: ");
                 bike.ten = Console.ReadLine();
                 Console.WriteLine("Mời nhập vào hãng sản xuất: ");
                 bike.hSX = Console.ReadLine();
-                // Kiểm tra trùng lặp theo thuộc tính iD
-                if (_lstBike.Any(b => b.iD == bike.iD))// Dùng Any kiếm tra trong _lstBike có trùng hay không
+                
+                if (_lstBike.Any(b => b.iD == bike.iD))// 
                 {
-                    Console.WriteLine($"Xe đạp với iD đã nhập đã tồn tại trong danh sách!"); // Nếu có thì thông báo trùng
+                    Console.WriteLine($"Xe đạp với iD đã nhập đã tồn tại trong danh sách!"); 
                 }
                 else
                 {
-                    _lstBike.Add(bike); // Nếu không thì thêm vào 
+                    _lstBike.Add(bike); 
                 }
                 Console.WriteLine("Bạn có muốn nhập tiếp không? N:Không   Phím còn lại: Có");
                 tiepTuc = Console.ReadLine();
-            } while (tiepTuc.ToLower() != "n");
+            } while (tiepTuc.ToLower() != "N");
         }
         public void XuatThongTin()
         {
@@ -57,8 +57,8 @@ namespace HaiNH_CSharp2_BaiTap2
             {
                 try
                 {
-                    _fs = new FileStream(filepath, FileMode.OpenOrCreate); // Dùng đối tượng FileStream để mở hoặc tạo file
-                    _bf.Serialize(_fs, _lstBike); // Dùng BinaryFomatter để chuyển đối tượng thành chuỗi byte và lưu trữ _lstBike
+                    _fs = new FileStream(filepath, FileMode.OpenOrCreate); 
+                    _bf.Serialize(_fs, _lstBike); 
                     _fs.Close();
                     Console.WriteLine("Lưu file thành công!");
                 }
@@ -68,56 +68,49 @@ namespace HaiNH_CSharp2_BaiTap2
                 }
             }
         }
-        public List<Bike> DocFile() // Generic kiểu dữ liệu List<Bike>
+        public List<Bike> DocFile() 
         {
             if (!File.Exists(filepath))
             {
-                Console.WriteLine($"{filepath} không tồn tại!"); // Nếu rỗng thì sẽ thông báo   
-                return new List<Bike>();   // Và trả về danh sách rỗng
+                Console.WriteLine($"{filepath} không tồn tại!"); 
+                return new List<Bike>();  
             }
             else
             {
                 try
                 {
-                    _fs = new FileStream(filepath, FileMode.Open, FileAccess.Read); // Nếu tồn tại file thì sẽ mở và đọc file bằng FileStream
-                    var doc = _bf.Deserialize(_fs) as List<Bike>; // bằng Deserialize của BinaryFomater 
+                    _fs = new FileStream(filepath, FileMode.Open, FileAccess.Read); 
+                    var doc = _bf.Deserialize(_fs) as List<Bike>; // 
                     _fs.Close();
-                    return doc; // trả về danh sách vừa đọc được
+                    return doc; 
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(e);
                 }
-                return null; // Khi lỗi đọc file sẽ trả về null
+                return null; 
             }
         }
 
         public void XoaID()
         {
-            // Biến tiepTuc được sử dụng để kiểm soát việc lặp lại hỏi người dùng có muốn xóa thêm hay không
             bool tiepTuc = true;
-
             while (tiepTuc)
             {
-                // Yêu cầu người dùng nhập giá trị ID của đối tượng Bike muốn xóa
                 Console.WriteLine("Nhập ID bạn muốn xóa: ");
                 int id = Convert.ToInt32(Console.ReadLine());
 
-                // Tìm kiếm đối tượng Bike trong danh sách có ID tương ứng với giá trị được nhập
                 var bike = _lstBike.FirstOrDefault(x => x.iD == id);
                 if (bike != null)
                 {
-                    // Nếu tìm thấy đối tượng Bike, xóa nó khỏi danh sách
                     _lstBike.Remove(bike);
                     Console.WriteLine("Xóa thành công!");
                 }
                 else
                 {
-                    // Nếu không tìm thấy đối tượng Bike, in ra thông báo lỗi
                     Console.WriteLine($"Không tìm thấy đối tượng có ID = {id}");
                 }
 
-                // Hỏi người dùng có muốn xóa thêm đối tượng Bike hay không
                 Console.WriteLine("Bạn có muốn xóa thêm không? (Y/N)");
                 string tiepTucChuoi = Console.ReadLine();
 
@@ -126,9 +119,8 @@ namespace HaiNH_CSharp2_BaiTap2
                 {
                     tiepTuc = true;
                 }
-                else
+                else if(tiepTucChuoi.ToLower() == "N"
                 {
-                    // Nếu người dùng nhập bất kỳ giá trị khác, dừng vòng lặp
                     tiepTuc = false;
                 }
             }
