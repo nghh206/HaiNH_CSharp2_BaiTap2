@@ -118,7 +118,7 @@ namespace HaiNH_CSharp2_BaiTap2
                 {
                     tiepTuc = true;
                 }
-                else if(tiepTucChuoi.ToLower() == "N"
+                else if(tiepTucChuoi.ToLower() == "N")
                 {
                     tiepTuc = false;
                 }
