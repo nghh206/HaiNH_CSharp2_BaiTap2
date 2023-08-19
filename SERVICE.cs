@@ -27,7 +27,7 @@ namespace HaiNH_CSharp2_BaiTap2
                 Console.WriteLine("Mời nhập vào hãng sản xuất: ");
                 bike.hSX = Console.ReadLine();
                 
-                if (_lstBike.Any(b => b.iD == bike.iD))// 
+                if (_lstBike.Any(b => b.iD == bike.iD))
                 {
                     Console.WriteLine($"Xe đạp với iD đã nhập đã tồn tại trong danh sách!"); 
                 }
@@ -80,7 +80,7 @@ namespace HaiNH_CSharp2_BaiTap2
                 try
                 {
                     _fs = new FileStream(filepath, FileMode.Open, FileAccess.Read); 
-                    var doc = _bf.Deserialize(_fs) as List<Bike>; // 
+                    var doc = _bf.Deserialize(_fs) as List<Bike>; 
                     _fs.Close();
                     return doc; 
                 }
