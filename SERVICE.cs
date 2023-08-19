@@ -114,7 +114,6 @@ namespace HaiNH_CSharp2_BaiTap2
                 Console.WriteLine("Bạn có muốn xóa thêm không? (Y/N)");
                 string tiepTucChuoi = Console.ReadLine();
 
-                // Nếu người dùng nhập Y hoặc y, tiếp tục vòng lặp để hỏi tiếp
                 if (tiepTucChuoi.ToLower() == "Y")
                 {
                     tiepTuc = true;
