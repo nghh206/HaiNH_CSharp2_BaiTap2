@@ -37,7 +37,7 @@ namespace HaiNH_CSharp2_BaiTap2
                 }
                 Console.WriteLine("Bạn có muốn nhập tiếp không? N:Không   Phím còn lại: Có");
                 tiepTuc = Console.ReadLine();
-            } while (tiepTuc.ToLower() != "N");
+            } while (tiepTuc.ToUpper() != "N");
         }
         public void XuatThongTin()
         {
@@ -114,11 +114,11 @@ namespace HaiNH_CSharp2_BaiTap2
                 Console.WriteLine("Bạn có muốn xóa thêm không? (Y/N)");
                 string tiepTucChuoi = Console.ReadLine();
 
-                if (tiepTucChuoi.ToLower() == "Y")
+                if (tiepTucChuoi.ToUpper() == "Y")
                 {
                     tiepTuc = true;
                 }
-                else if(tiepTucChuoi.ToLower() == "N")
+                else if(tiepTucChuoi.ToUpper() == "N")
                 {
                     tiepTuc = false;
                 }
